@@ -1,0 +1,7 @@
+.agent-manifest.json
+.agent-status.md
+.agent-session.json
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
