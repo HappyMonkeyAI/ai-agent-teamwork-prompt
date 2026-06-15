@@ -1,7 +1,41 @@
 # ai-agent-teamwork
 
-A lightweight, terminal-friendly coordination system for multiple AI agents building the same project together.
+A lightweight, terminal-friendly coordination system for multiple AI agents building the same project together at pace.
 No central orchestrator required. No special runtime. Just files, locks, and a shared task board.
+
+**Note:** This is an early, beta-stage effort at creating a simple coordination system.
+
+## Version
+Current version: `v0.1.0-beta` (See `VERSION` file)
+
+## How to Use This System
+
+To coordinate multiple subagents for building a project, follow these steps:
+
+1.  **Clone this repository**:
+    ```bash
+    git clone https://github.com/google/ai-agent-teamwork.git
+    cd ai-agent-teamwork
+    ```
+
+2.  **Create your project directory**:
+    Create a new directory for your project under the `projects/` folder:
+    ```bash
+    mkdir -p projects/my-new-project
+    ```
+
+3.  **Bootstrap your project**:
+    Point your primary or "best" agent at the following files from the parent directory to initialize the project:
+    - `setup-prompt.txt`
+    - `bootstrap-project-prompt.md`
+
+    The agent will use these to spin up the project structure, task list, manifest files, and an `AGENTS.md` file. The `AGENTS.md` file contains instructions for any subagents working on the project to work together as a "swarm."
+
+4.  **Add subagents to the swarm**:
+    You can explicitly request any CLI-capable agent (such as Claude, Codex, Gemini, Antigravity, Opencode, etc.) to join the project. Instruct them to reference the agent bootstrap prompt in the parent directory:
+    - `bootstrap-agent-prompt.md`
+
+    This ensures they will work as part of the swarm, coordinating through the manifest and task list without stepping on each other's toes.
 
 ## What this gives you
 
