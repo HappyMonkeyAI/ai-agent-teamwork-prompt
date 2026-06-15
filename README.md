@@ -1,25 +1,42 @@
 # ai-agent-teamwork
 
-A lightweight, decentralized coordination layer for multiple AI agents working on the same codebase without a central orchestrator.
+A lightweight, terminal-friendly coordination system for multiple AI agents building the same project together.
+No central orchestrator required. No special runtime. Just files, locks, and a shared task board.
 
-## What this repo contains
+## What this gives you
 
-- `docs/` — usage, protocol notes, and future guidance
-- `.agent-manifest.json` — machine-readable lock/state tracking (source of truth for active coordination)
-- `.agent-status.md` — human-readable coordination dashboard
-- `research/` — references, comparisons, and notes about related projects and approaches
+- A project bootstrap prompt any agent can run
+- An agent bootstrap prompt that teaches any subagent how to join safely
+- File locks and a manifest so parallel edits don’t clobber each other
+- A self-service task board (`tasks.py`) so agents pick their own work
+- Optional ADR scaffolding and research folders for project context
 
-## Getting started
+## How it works
 
-Use the `multi-agent-coordination` skill from Hermes, or call the Python scripts in `scripts/` directly:
+1. You give one agent the **project bootstrap prompt**
+   - It creates the project structure, task list, coordination scripts, and README/CONTEXT
+2. You give every other agent the **agent bootstrap prompt**
+   - It reads the task board, claims one task, locks the files it will edit, builds, then unlocks
+3. Locks and task status live in plain files in the project root
+   - Any agent can see what’s locked, in progress, done, or blocked
+
+## Quick start
 
 ```bash
-python3 /home/stephen/.hermes/skills/devops/multi-agent-coordination/scripts/init.py
-python3 /home/stephen/.hermes/skills/devops/multi-agent-coordination/scripts/lock.py src/auth.py "Adding OAuth2 support"
-python3 /home/stephen/.hermes/skills/devops/multi-agent-coordination/scripts/status.py
+# From the project directory
+python3 scripts/init.py
+python3 scripts/tasks.py list
+python3 scripts/tasks.py claim <task-id>
+python3 scripts/tasks.py verify-complete <task-id>
+python3 scripts/tasks.py unlock <file>
 ```
 
 Set `AGENT_ID` per agent so locks are unambiguous.
+
+## Current CLI guidance
+
+- `opencode` is the proven non-interactive dispatch path
+- Other CLIs may work but can have sandbox or approval friction around file writes
 
 ## Goals
 
