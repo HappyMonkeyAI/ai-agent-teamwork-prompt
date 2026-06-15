@@ -37,6 +37,12 @@ To coordinate multiple subagents for building a project, follow these steps:
 
     This ensures they will work as part of the swarm, coordinating through the manifest and task list without stepping on each other's toes.
 
+5.  **Run the final review when the task board is done**:
+    Once all tasks are complete, fire the final review prompt at the strongest available agent:
+    - `final-review-prompt.md`
+
+    This gives you one last integration pass for cross-task issues, cleanup, and validation before shipping.
+
 ## What this gives you
 
 - A project bootstrap prompt any agent can run
