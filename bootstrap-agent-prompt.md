@@ -47,14 +47,12 @@ Rules:
 
 ## 5. Verifying your work
 
-Before marking a task complete, verify the actual filesystem state:
+Before marking a task complete, you MUST verify both the filesystem and the compile/test state:
 
-- Every declared task file must exist and be non-empty.
-- Run relevant checks only if the task requires them:
-  - `npm run build`
-  - `npx tsc --noEmit`
-  - `pytest`
-  - etc.
+- **Filesystem**: Every declared task file must exist and be non-empty.
+- **Build/Compile**: Ensure the project builds successfully (e.g. `npm run build`, `docker compose build`, or `npx tsc --noEmit`).
+- **Tests**: Run the test suites (e.g. `pytest`, `npm test`, `playwright test`) and ensure all tests pass. 
+- **CRITICAL**: The `verify-complete` CLI script only checks file existence and size. It does NOT replace running compiler, build, and test tools. You must run these verification tools manually before marking the task complete.
 
 ## 6. Completing and unlocking
 
