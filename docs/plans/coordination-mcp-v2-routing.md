@@ -14,12 +14,13 @@ Let LAN/Hermes agents **pick the right CLI worker** without tribal knowledge, wh
 - [x] MCP: `list_cli_profiles`, `get_cli_profile`, `suggest_cli_for_task`
 - [x] Env `AGENT_CLI_PROFILES_DIR` (default `~/projects/ai-agent-teamwork-prompt/profiles`)
 
-## Phase B (next)
+## Phase B (done)
 
-- [ ] Hermes skill patch: point `coding-cli-delegation` at MCP suggest tool
-- [ ] Kanban worker prompt: call suggest before spawning codex/agy
-- [ ] `submit_task` optional field `preferred_cli_profile` validated against profiles
-- [ ] Launcher registry: expose profile dir path in project metadata for agents
+- [x] Hermes `coding-cli-delegation` + kanban orchestrator reference MCP suggest
+- [x] Kanban worker doc: `docs/kanban-and-hermes-worker-cli-routing.md`
+- [x] `submit_task(preferred_cli_profile=...)` validated
+- [x] Launcher registry `agent_coordination` + MCP `get_coordination_bootstrap`
+- [ ] Optional: Hermes core inject routing into KANBAN_GUIDANCE (future)
 
 ## Phase C (later)
 
