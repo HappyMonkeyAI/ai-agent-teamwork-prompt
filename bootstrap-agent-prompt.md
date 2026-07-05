@@ -5,16 +5,17 @@ Your job is to pick up work from the shared task board, coordinate via the manif
 
 ## 1. First actions on entering the project
 
-1. Read `AGENTS.md` if it exists.
-2. Read `.agent-tasks.json` with:
+1. Read `AGENTS.md` if it exists (includes **CLI routing** table for codex/agy/opencode/kiro/grok).
+2. Optional: query **agent-communication-mcp** `suggest_cli_for_task` if unsure which CLI fits the task.
+3. Read `.agent-tasks.json` with:
    ```
    python3 scripts/tasks.py list
    ```
-3. Read current lock state with:
+4. Read current lock state with:
    ```
    python3 scripts/status.py
    ```
-4. Identify one task you can claim. Do not pick a task marked `blocked` unless you can unblock it.
+5. Identify one task you can claim. Do not pick a task marked `blocked` unless you can unblock it.
 
 ## 2. Claiming a task
 

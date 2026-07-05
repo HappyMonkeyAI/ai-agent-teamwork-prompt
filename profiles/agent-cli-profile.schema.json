@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://happymonkey.ai/schemas/agent-cli-profile.json",
+  "title": "Stephen CLI agent profile",
+  "type": "object",
+  "required": ["id", "display_name", "kind", "good_for", "avoid_for"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+    "display_name": { "type": "string" },
+    "kind": { "enum": ["cli_coding", "orchestrator", "inference_only"] },
+    "invoke": {
+      "type": "object",
+      "properties": {
+        "one_shot": { "type": "string" },
+        "interactive": { "type": "string" },
+        "hermes_delegate": { "type": "boolean" }
+      }
+    },
+    "needs_pty": { "type": "boolean", "default": false },
+    "good_for": { "type": "array", "items": { "type": "string" } },
+    "avoid_for": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "parallel_lane_id": { "type": "string" },
+    "verification": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

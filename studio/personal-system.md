@@ -4,8 +4,8 @@ This slot documents the user’s local machine setup that swarm workers should a
 
 ## Model endpoint
 
-- LM Studio: `http://192.168.5.157:1234`
-- OpenAI-compatible: `http://192.168.5.157:1234/v1`
+- LM Studio: `http://192.168.5.232:1234`
+- OpenAI-compatible: `http://192.168.5.232:1234/v1`
 - Prefer local model `google/gemma-4-12b-qat` unless another is specified
 
 ## Available CLIs

@@ -1,0 +1,20 @@
+id: agy
+display_name: Google Antigravity CLI (agy)
+kind: cli_coding
+invoke:
+  one_shot: 'agy -p --add-dir {workdir} --dangerously-skip-permissions --print-timeout 600s "{prompt}"'
+  interactive: 'agy (pty=true)'
+  hermes_delegate: false
+needs_pty: false
+parallel_lane_id: agy-lane
+tags: [google, multi-file, providers, adapters]
+good_for:
+  - multi-file edits when --add-dir is set to repo root
+  - provider/adapter modules parallel to codex (non-overlapping files)
+  - long headless passes with explicit print-timeout
+avoid_for:
+  - hub files locked by another lane (e.g. server.py) without merge plan
+  - first-time OAuth before headless works
+  - assuming exit 0 means files changed (verify git status)
+verification: git status --short; pytest; agy no-op if clean tree — Hermes wires hub file
+notes: --add-dir is mandatory for real edits.

@@ -15,6 +15,7 @@ This repo is a coordination layer, not an app. Treat docs and protocols as first
 
 - Doc updates should land in the same change as the protocol or workflow change they reflect.
 - ADRs go in `docs/adr/` and should be short and decision-focused.
+- **CLI routing:** canonical profiles in `profiles/`; see `docs/agent-cli-profiles.md`. Prefer MCP `suggest_cli_for_task` when orchestrating codex/agy/opencode lanes.
 
 ## Research behavior
 

@@ -50,6 +50,11 @@ To coordinate multiple subagents for building a project, follow these steps:
 - File locks and a manifest so parallel edits don’t clobber each other
 - A self-service task board (`tasks.py`) so agents pick their own work
 - Optional ADR scaffolding and research folders for project context
+- **CLI agent profiles** (`profiles/`) and `templates/AGENTS.md` for codex, agy, opencode, kiro, grok routing
+
+## CLI profiles
+
+See `docs/agent-cli-profiles.md`. Wired into **agent-communication-mcp** (`suggest_cli_for_task`).
 
 ## How it works
 

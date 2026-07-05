@@ -52,6 +52,8 @@ Initialize the multi-agent coordination system:
 - Prefer manifest mode for rapid prototyping, branch mode when clean merge history matters.
 - `.agent-manifest.json`, `.agent-status.md`, and `.agent-tasks.json` should be in `.gitignore`.
 - Add coordination rules from the skill template to `AGENTS.md` if the project uses one.
+- Copy or adapt `templates/AGENTS.md` from **ai-agent-teamwork-prompt** (includes CLI profile routing).
+- Point agents at canonical profiles: `~/projects/ai-agent-teamwork-prompt/profiles/`.
 
 ## 6. Delivery checklist
 

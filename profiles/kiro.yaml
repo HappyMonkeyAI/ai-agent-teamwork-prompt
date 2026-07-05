@@ -1,0 +1,18 @@
+id: kiro
+display_name: Kiro (IDE agent)
+kind: cli_coding
+invoke:
+  one_shot: 'Kiro IDE agent with project workspace open'
+  interactive: 'Kiro chat / spec-driven flows in IDE'
+  hermes_delegate: false
+needs_pty: false
+parallel_lane_id: kiro-lane
+tags: [ide, specs, aws-kiro]
+good_for:
+  - spec-driven or IDE-native iteration when repo is open in Kiro
+  - tasks the user runs inside Kiro rather than headless SSH
+avoid_for:
+  - headless LAN cron without IDE attached
+  - parallel manifest locks on same files as codex/agy
+verification: user confirms diff in IDE; align with branch/manifest mode choice
+notes: Treat as optional lane when user works in Kiro; profile documents fit for routing hints only.

@@ -1,0 +1,18 @@
+id: grok
+display_name: xAI Grok (Hermes / grok CLI)
+kind: inference_only
+invoke:
+  one_shot: 'hermes session with xai-oauth provider, or local grok CLI if configured'
+  hermes_delegate: true
+needs_pty: false
+parallel_lane_id: grok-orchestrator
+tags: [xai, fast-reasoning, web-search, orchestration]
+good_for:
+  - primary operator session (tools, MCP, delegation)
+  - research synthesis and routing decisions
+  - terse user-facing coordination on Stephen stack
+avoid_for:
+  - long autonomous repo rewrites without locks (use codex/agy/opencode)
+  - substituting for named CLI when user said codex/agy
+verification: tool-backed evidence; reality-gate before ship
+notes: Default Hermes profile for Stephen; not a drop-in git worker unless user invokes grok CLI explicitly.

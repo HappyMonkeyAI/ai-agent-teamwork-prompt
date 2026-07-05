@@ -36,7 +36,7 @@ Collected user prompts and directions from the multi-agent coordination + voice-
 
 ## 5. Local Environment / Tooling Known
 
-- LM Studio endpoint: http://192.168.5.157:1234
+- LM Studio endpoint: http://192.168.5.232:1234
 - Models referenced: qwen3.5-2b-kimi-and-opus-distillation-i1 2B, qwen3.5-9b-deepseek-v4-flash
 - CLI tools: opencode, gemini, agy, codex
 - Local repos: /home/stephen/Documents/www/php-ai-page-gen/ai-site-builder-v2, /home/stephen/Documents/www/happymonkeyWP

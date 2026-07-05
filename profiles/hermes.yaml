@@ -1,0 +1,18 @@
+id: hermes
+display_name: Hermes Agent (orchestrator)
+kind: orchestrator
+invoke:
+  one_shot: 'delegate_task(goal=..., context=...) or execute_code for 3+ tool steps'
+  hermes_delegate: true
+needs_pty: false
+parallel_lane_id: hermes-primary
+tags: [mcp, cron, kanban, subagents]
+good_for:
+  - tool-heavy work (MCP, terminal, file ops, web)
+  - spawning leaf subagents for isolated reasoning
+  - durable cron and gateway delivery
+avoid_for:
+  - flooding context with mechanical loops (use execute_code)
+  - durable work only in background delegate without user awareness
+verification: reality-gate; verify subagent claims with stat/curl/read
+notes: Pair with cli_coding agents for large code passes.

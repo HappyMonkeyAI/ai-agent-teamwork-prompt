@@ -1,0 +1,19 @@
+id: opencode
+display_name: OpenCode
+kind: cli_coding
+invoke:
+  one_shot: 'opencode run --format json -m {model} --dir {workdir} "{prompt}"'
+  interactive: 'opencode TUI'
+  hermes_delegate: false
+needs_pty: true
+parallel_lane_id: opencode-lane
+tags: [open-source, provider-agnostic, long-session]
+good_for:
+  - user preference when Codex subagent quality is poor
+  - provider-flexible coding sessions
+  - bounded run with JSON stdout parsing
+avoid_for:
+  - extra positional args after -f (treated as file paths)
+  - shell-string proc_open without argv array from PHP
+verification: parse NDJSON for type text; git diff; parent re-runs tests
+notes: Prompt must be last argument to run.

@@ -1,0 +1,21 @@
+id: codex
+display_name: OpenAI Codex CLI
+kind: cli_coding
+invoke:
+  one_shot: 'codex exec --cd {workdir} --dangerously-bypass-approvals-and-sandbox "{prompt}"'
+  interactive: 'codex (pty=true in Hermes terminal)'
+  hermes_delegate: false
+needs_pty: false
+parallel_lane_id: codex-lane
+tags: [openai, greenfield, refactor, plan-execution]
+good_for:
+  - bounded implementation from a written plan
+  - refactors and multi-file feature work in a git repo
+  - parallel task-board lane when files do not overlap agy lane
+  - subprocess inference from PHP/cron (exec --json)
+avoid_for:
+  - user explicitly named another CLI (agy, opencode, grok)
+  - interactive debugging without pty
+  - tasks needing Hermes memory/skills without a self-contained prompt
+verification: git diff --stat; plan-listed pytest/typecheck; never trust exit code alone
+notes: Prefer scoped prompts with current-state summary when full AGENTS.md times out.
