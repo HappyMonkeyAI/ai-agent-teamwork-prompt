@@ -32,4 +32,4 @@ Edit YAML here; restart not required for MCP (reads on each call). Keep in sync 
 
 - `docs/plans/coordination-mcp-v2-routing.md`
 - `templates/AGENTS.md` (snippet for per-repo AGENTS.md)
-- `agent-communication-mcp` tools: `list_cli_profiles`, `get_cli_profile`, `suggest_cli_for_task`
+- `agent-communication-mcp` tools: `list_cli_profiles`, `get_cli_profile`, `suggest_cli_for_task`, `get_coordination_bootstrap`, `submit_task(preferred_cli_profile=...)`
