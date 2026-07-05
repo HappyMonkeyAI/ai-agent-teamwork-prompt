@@ -20,7 +20,7 @@ Let LAN/Hermes agents **pick the right CLI worker** without tribal knowledge, wh
 - [x] Kanban worker doc: `docs/kanban-and-hermes-worker-cli-routing.md`
 - [x] `submit_task(preferred_cli_profile=...)` validated
 - [x] Launcher registry `agent_coordination` + MCP `get_coordination_bootstrap`
-- [ ] Optional: Hermes core inject routing into KANBAN_GUIDANCE (future)
+- [x] Optional: Hermes core inject routing into KANBAN_GUIDANCE (local `~/.hermes/hermes-agent/agent/prompt_builder.py`)
 
 ## Phase C (later)
 
