@@ -78,6 +78,40 @@ python3 scripts/tasks.py unlock <file>
 
 Set `AGENT_ID` per agent so locks are unambiguous.
 
+## Changed-aware validation
+
+Run only the validation lanes affected by changed or untracked files:
+
+```bash
+python3 scripts/check_changed.py
+python3 scripts/check_changed.py --base origin/main
+python3 scripts/check_changed.py --config path/to/checks.json --base <git-ref>
+```
+
+The default base is `HEAD`, which checks working-tree and untracked files. An explicit
+base also includes tracked changes from that ref through the current working tree.
+Matching lanes from `templates/checks.json` execute concurrently. The terminal gets a
+compact pass/fail summary; complete stdout/stderr is retained under
+`.tmp/check-runs/<timestamp>/`. Any failed selected lane makes the runner exit nonzero.
+
+The configuration boundary is intentionally small: the top-level object has `version`
+and `lanes`; every lane has exactly `name`, `paths`, and `command`. Commands are JSON
+argument arrays and execute directly without a shell, so pipes, redirects, substitutions,
+and shell metacharacters are not interpreted. The runner validates this structure and
+safe lane names before execution. **Configuration is still trusted repository-local
+code**: a command can invoke any executable with the current user's permissions. Review
+config changes like script changes; never run a config from an untrusted branch.
+
+Example lane:
+
+```json
+{
+  "name": "python-tests",
+  "paths": ["src/**/*.py", "tests/**/*.py"],
+  "command": ["python3", "-m", "pytest", "tests"]
+}
+```
+
 ## Current CLI guidance
 
 - `opencode` is the proven non-interactive dispatch path

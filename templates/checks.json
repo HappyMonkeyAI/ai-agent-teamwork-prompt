@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "lanes": [
+    {
+      "name": "verifier-tests",
+      "paths": [
+        "scripts/*.py",
+        "scripts/**/*.py",
+        "tests/*.py",
+        "tests/**/*.py",
+        "templates/checks.json"
+      ],
+      "command": ["python3", "-m", "pytest", "tests"]
+    }
+  ]
+}
