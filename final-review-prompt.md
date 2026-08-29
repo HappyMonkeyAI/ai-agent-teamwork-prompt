@@ -15,6 +15,7 @@ Your job is to inspect the full result after the task board is complete, catch a
    python3 scripts/status.py
    ```
 4. Confirm the active work is finished, blocked, or ready for final review.
+5. Run `git status --short --branch` and identify any pre-existing dirty paths before reviewing changes.
 
 ## 2. What to review
 
@@ -26,6 +27,7 @@ Review the project as a whole, not just one slice:
 - failing tests, build errors, or lint issues
 - cleanup items, obvious rough edges, and leftover TODOs
 - anything that looks complete locally but incomplete in the full system
+- worker handoffs against the actual changed paths, branch, and worktree
 
 ## 3. Validation
 
@@ -37,6 +39,8 @@ Run the strongest relevant checks for the repo:
 - any project-specific verification steps
 
 Do not stop at reading files. Verify the actual result with real commands.
+
+Treat focused checks, partial suites, and worker self-reports as evidence of a sub-check only. Do not declare the project accepted unless the strongest relevant full verification passes or the remaining failures are explicitly recorded as blockers.
 
 ## 4. Fixing issues
 
@@ -54,6 +58,8 @@ When everything looks correct:
 - update the task board so the final state is accurate
 - leave no stale locks behind
 - make sure the repo is in a genuinely finished state, not just "task-board complete"
+- confirm no generated artifacts or unrelated dirty changes were staged
+- record exact pass/fail/skip counts and runtime/browser limitations in the project progress documentation
 
 ## 6. Coordination rules
 

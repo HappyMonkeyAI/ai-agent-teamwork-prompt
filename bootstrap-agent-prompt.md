@@ -17,6 +17,21 @@ Your job is to pick up work from the shared task board, coordinate via the manif
    ```
 5. Identify one task you can claim. Do not pick a task marked `blocked` unless you can unblock it.
 
+## 1a. Worktree and baseline
+
+When branch mode is active, implementation work MUST happen in an isolated worktree:
+
+```bash
+git status --short --branch
+git worktree add .worktrees/<task-id> -b agent/<task-id> <base-ref>
+cd .worktrees/<task-id>
+```
+
+- Confirm the worktree and branch before editing.
+- Record the baseline commit and existing dirty paths in the handoff.
+- Never reset, clean, stash, or overwrite pre-existing changes to make the tree convenient.
+- Do not commit or push unless the user or orchestrator explicitly authorizes it.
+
 ## 2. Claiming a task
 
 ```
@@ -103,3 +118,16 @@ When you are done for this session:
 1. Finish or block any claimed tasks.
 2. Unlock all files you locked.
 3. Leave the task board in an accurate state.
+
+## 11. Evidence-bearing handoff
+
+Return this exact information to the parent/orchestrator:
+
+- task id and status;
+- absolute worktree path and branch;
+- exact changed paths, including untracked files;
+- commands run and their real results for tests, build, typecheck, lint, and runtime/browser checks;
+- known failures, skipped checks, and environmental limitations;
+- commit hash if committed; explicitly state when no commit or push occurred.
+
+Do not describe a task as complete when only a focused test or build passed. The parent agent must independently review the final tree and run the strongest relevant verification.

@@ -117,6 +117,18 @@ Example lane:
 - `opencode` is the proven non-interactive dispatch path
 - Other CLIs may work but can have sandbox or approval friction around file writes
 
+## Safe implementation mode
+
+For changes that need clean reviewable history, use one isolated worktree and branch per implementation task:
+
+```bash
+git worktree add .worktrees/<task-id> -b agent/<task-id> <base-ref>
+cd .worktrees/<task-id>
+python3 scripts/tasks.py claim <task-id>
+```
+
+Workers should claim file ownership before editing, preserve pre-existing dirty changes, and return an evidence-bearing handoff with exact paths, commands, results, known failures, and commit status. The parent agent reviews the actual worktree and owns final acceptance. A passing build or focused test is not a substitute for the full relevant verification gate.
+
 ## Goals
 
 1. Let multiple AI agents share one local checkout safely.
