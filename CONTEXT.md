@@ -25,9 +25,19 @@
 
 ### Branch mode (clean history)
 
-- Each agent works in its own branch or cloned workspace.
+- Each implementation agent works in its own Git worktree under `.worktrees/<task-id>` and on an `agent/<task-id>` branch. A separate clone is acceptable when worktrees are unavailable.
+- Before editing, confirm the worktree, branch, baseline commit, task ownership, and declared file scope.
+- Preserve pre-existing dirty changes; never reset, clean, stash, or overwrite another agent's work without explicit coordination.
 - Merge only after an agent reports task complete.
 - Rebase onto main before merge to keep history linear.
+- The parent/orchestrator performs final integration verification; a worker report is not acceptance evidence by itself.
+
+### Subagent context and handoff
+
+- Every delegated task receives a self-contained context pack: repository/worktree path, task goal, dependencies, owned files, relevant symbols, baseline verification, constraints, and exact expected commands.
+- Workers return an evidence-bearing handoff with the worktree/branch, exact changed paths, tests/build/typecheck output, known failures, and commit/push status.
+- Focused tests, partial runs, and successful compilation must be labeled as such; they must not be reported as full acceptance.
+- Generated reports, screenshots, logs, and test artifacts stay out of commits unless explicitly required.
 
 ## Resolved architecture decisions
 
